@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ai_insurance-deployment
+  name: ai-insurance-deployment
   labels:
     app: ai_insurance
 spec:

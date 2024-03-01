@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ai_insurance-ingress
+  name: ai-insurance-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     # Enable CORS by adding these annotations
@@ -14,15 +14,15 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - ai_insurance.kub.sspcloud.fr
+    - ai-insurance.kub.sspcloud.fr
   rules:
-  - host: ai_insurance.kub.sspcloud.fr
+  - host: ai-insurance.kub.sspcloud.fr
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: ai_insurance-service
+            name: ai-insurance-service
             port:
               number: 80
