@@ -16,6 +16,8 @@ st.set_page_config(
         Contributions:
         - [Jules Brablé](https://github.com/JulesBrable) - jules.brable@ensae.fr
         - [Eunice Koffi]() - eunice.koffi@ensae.fr
+        - [Berthe Magajie Wamsa]() - berthe.magajie@ensae.fr
+        - [Leela Thamaraikkannan]() - leela.thamaraikkannan@ensae.fr
         """
     }
 )
