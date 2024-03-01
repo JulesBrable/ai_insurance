@@ -1,3 +1,4 @@
+"""Menu Page of the App"""
 import streamlit as st
 
 
