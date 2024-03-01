@@ -1,3 +1,4 @@
+"""Functions that are used during modelling step"""
 import pandas as pd
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import OneHotEncoder
@@ -24,8 +25,8 @@ def get_model_configs():
             ]
         }
     }
-    
-    
+
+
 def create_preprocessor(num_features, cat_features):
     num_transformer = SimpleImputer(strategy='median')
     cat_transformer = Pipeline(steps=[
@@ -41,15 +42,17 @@ def create_preprocessor(num_features, cat_features):
 
 
 def train_model(preprocessor, model, X_train, y_train):
-        pipeline = Pipeline(steps=[('preprocessor', preprocessor),
-                                    ('model', model)])
-        pipeline.fit(X_train, y_train)
-        return pipeline
+    pipeline = Pipeline(steps=[
+        ('preprocessor', preprocessor),
+        ('model', model)
+        ])
+    pipeline.fit(X_train, y_train)
+    return pipeline
 
 
 def get_metrics(y_true, y_pred):
     accuracy = round(accuracy_score(y_true, y_pred), 2)
     classif = pd.DataFrame(
         classification_report(y_true, y_pred, output_dict=True)
-    ).transpose().iloc[:2,:]
+    ).transpose().iloc[:2, :]
     return accuracy, classif
