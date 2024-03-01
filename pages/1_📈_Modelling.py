@@ -1,3 +1,4 @@
+"""Second page of the App"""
 import streamlit as st
 
 st.header("Machine and Deep Learning Models")
