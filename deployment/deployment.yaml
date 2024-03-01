@@ -15,7 +15,7 @@ spec:
         app: ai_insurance
     spec:
       containers:
-      - name: mlops
+      - name: ai_insurance
         image: jbrable/ai_insurance:latest
         ports:
         - containerPort: 80
