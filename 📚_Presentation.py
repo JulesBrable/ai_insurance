@@ -9,10 +9,10 @@ st.set_page_config(
     initial_sidebar_state="expanded",
     menu_items={
         'Report a bug': "https://github.com/JulesBrable/ai_insurance/issues/new",
-        'About': """ 
+        'About': """
         If you want to read more about the project, you would be interested in going to the corresponding
         [GitHub](https://github.com/JulesBrable/ai_insurance) repository.
-        
+
         Contributions:
         - [Jules Brablé](https://github.com/JulesBrable) - jules.brable@ensae.fr
         - [Eunice Koffi]() - eunice.koffi@ensae.fr
