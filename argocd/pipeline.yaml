@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ai-insurance
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/JulesBrable/ai-insurance.git
+    targetRevision: main
+    path: deployment
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: user-jbrablx
+  syncPolicy:
+    automated:
+      selfHeal: true
