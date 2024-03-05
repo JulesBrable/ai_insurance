@@ -40,7 +40,7 @@ In this project, we also built a simple [`Streamlit`](https://streamlit.io/) web
 
 To access the app, one can simply click [here](https://ai-insurance.kub.sspcloud.fr/). Indeed, the app is deployed on a `Kubernetes` cluster hosted by [SSP Cloud](https://datalab.sspcloud.fr/).
 
-On the other hand, you can also run this app locally. To do so, once you have followed the set-up instruction described above, you will have to run the following command:
+On the other hand, you can also run this app locally. To do so, after following the set-up instruction described above, you will have to run the following command:
 
 ```bash
 streamlit run 📚_Presentation.py --server.port=5010
