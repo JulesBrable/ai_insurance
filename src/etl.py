@@ -4,7 +4,7 @@ import pandas as pd
 
 
 @st.cache_data
-def load_data(url):
+def load_data(url = "https://minio.lab.sspcloud.fr/jbrablx/ai_insurance/raw/train.csv"):
     """
     Load data from a specified URL into a pandas DataFrame.
 
@@ -17,7 +17,9 @@ def load_data(url):
     Decorators:
     - @st.cache_data: Caches the output to avoid reloading data from the same URL multiple times.
     """
-    return pd.read_csv(url)
+    df = pd.read_csv(url)
+    df.drop(['id'], axis=1, inplace=True)
+    return df
 
 
 def get_features_by_type(df, selected_features):

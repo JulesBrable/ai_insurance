@@ -3,7 +3,7 @@ import pandas as pd
 from io import BytesIO
 import streamlit as st
 
-from utils.models import get_model_configs
+from src.models import get_model_configs
 
 
 def manage_sidebar(df: pd.DataFrame, SEED):
