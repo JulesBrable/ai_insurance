@@ -2,21 +2,21 @@
 import streamlit as st
 from sklearn.model_selection import train_test_split
 
-from utils.etl import load_data, get_features_by_type
-from utils.models import create_preprocessor, train_model, get_metrics
-from utils.utils import manage_sidebar, to_excel, download_results, get_model_info
+from src.etl import load_data, get_features_by_type
+from src.models import create_preprocessor, train_model, get_metrics
+from src.app.page2 import manage_sidebar, to_excel, download_results, get_model_info
 
 st.title("Machine Learning Model Configuration")
 
 SEED = 42
 
-df = load_data("https://minio.lab.sspcloud.fr/jbrablx/ai_insurance/raw/train.csv")
-df.drop(['id'], axis=1, inplace=True)
+df = load_data()
 
 selected_features, model_type, model, model_kwargs, test_size = manage_sidebar(df, SEED)
 
 if selected_features:
-    num_features, cat_features = get_features_by_type(df, selected_features)
+    num_features = ['Age', 'Annual_Premium', 'Vintage']  
+    cat_features = ['Gender', 'Vehicle_Age', 'Driving_License', 'Region_Code', 'Previously_Insured', 'Vehicle_Damage', 'Policy_Sales_Channel'] 
 
 preprocessor = create_preprocessor(num_features, cat_features)
 
