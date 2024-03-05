@@ -52,5 +52,5 @@ By default, we are using port 5010, so once you have run the last command, you w
 
 * [Jules Brablé](https://github.com/JulesBrable) - jules.brable@ensae.fr
 * [Eunice Koffi]() - eunice.koffi@ensae.fr
-* [Berthe Magajie Wamsa]() - berthe.magajie@ensae.fr
+* [Berthe Magajie Wamsa](https://github.com/BertheMagella) - berthe.magajiewamsa@ensae.fr
 * [Leela Thamaraikkannan]() - leela.thamaraikkannan@ensae.fr
