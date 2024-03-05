@@ -7,10 +7,13 @@ import scipy.stats as ss
 
 sns.set_style("whitegrid")
 
+
 def plot_continuous(df, num_features):
-    st.markdown("<h1 style='font-family:Lucida Caligraphy;font-size:30px;color:DarkSlateBlue;text-align: center;'> KDE Plot for numerical variables </h1>", unsafe_allow_html=True)
+    st.markdown("""<h1 style='font-family:Lucida Caligraphy;font-size:30px;color:DarkSlateBlue;
+                text-align: center;'> Plots for numerical variables </h1>""",
+                unsafe_allow_html=True)
+
     cols = st.columns([4/5, 1/5], gap="medium")
-    
     with cols[1]:
         plot_type = st.radio(
             "Choose the type of plot you want to display:",
@@ -20,13 +23,8 @@ def plot_continuous(df, num_features):
     n = len(num_features)
     ncols = 3
     nrows = n // ncols + (n % ncols > 0)
-    
-    fig, axs = plt.subplots(nrows=nrows, ncols=ncols, figsize=(15, 5 * nrows))
-    if plot_type == 'Histogram':
-        fig.suptitle('Distribution of Numerical Features (Histograms)')
-    else:
-        fig.suptitle('Distribution of Numerical Features (Boxplots)')
 
+    fig, axs = plt.subplots(nrows=nrows, ncols=ncols, figsize=(15, 5 * nrows))
     axs = axs.flatten()
 
     for i, col in enumerate(num_features):
@@ -43,15 +41,21 @@ def plot_continuous(df, num_features):
     with cols[0]:
         st.pyplot(fig)
 
+
 def plot_pie(df: pd.DataFrame, target: str = "Response"):
-    st.markdown("<h1 style='font-family:Lucida Caligraphy;font-size:30px;color:DarkSlateBlue;text-align: center;'> Pie Plot for the target variable </h1>", unsafe_allow_html=True)
+    st.markdown("""<h1 style='font-family:Lucida Caligraphy;font-size:30px;color:DarkSlateBlue;
+                text-align: center;'> Pie Plot for the target variable </h1>""",
+                unsafe_allow_html=True)
     fig, ax = plt.subplots()
     ax.pie(df[target].value_counts(), labels=[0, 1], autopct='%1.1f%%', startangle=90)
     ax.axis('equal')
     st.pyplot(fig)
-    
+
+
 def plot_heatmap(df, num_features):
-    st.markdown("<h1 style='font-family:Lucida Caligraphy;font-size:30px;color:DarkSlateBlue;text-align: center;'> Correlation between numerical variables </h1>", unsafe_allow_html=True)
+    st.markdown("""<h1 style='font-family:Lucida Caligraphy;font-size:30px;color:DarkSlateBlue;
+                text-align: center;'> Correlation between numerical variables </h1>""",
+                unsafe_allow_html=True)
     corr_matrix = df[num_features].corr()
     fig, ax = plt.subplots()
     sns.heatmap(corr_matrix, annot=True, fmt=".2f", cmap="coolwarm", ax=ax)
@@ -59,7 +63,9 @@ def plot_heatmap(df, num_features):
 
 
 def plot_categorical_distributions(df, cat_features):
-    st.markdown("<h1 style='font-family:Lucida Caligraphy;font-size:30px;color:DarkSlateBlue;text-align: center;'> Barplot for categorical variables </h1>", unsafe_allow_html=True)
+    st.markdown("""<h1 style='font-family:Lucida Caligraphy;font-size:30px;color:DarkSlateBlue;
+                text-align: center;'> Barplot for categorical variables </h1>""",
+                unsafe_allow_html=True)
 
     num_rows = 2
     num_cols = [3, 3]
@@ -84,7 +90,9 @@ def plot_categorical_distributions(df, cat_features):
 
 
 def plot_kde_by_response(df):
-    st.markdown("<h1 style='font-family:Lucida Caligraphy;font-size:30px;color:DarkSlateBlue;text-align: center;'> KDE Plots by Response </h1>", unsafe_allow_html=True)
+    st.markdown("""<h1 style='font-family:Lucida Caligraphy;font-size:30px;color:DarkSlateBlue;
+                text-align: center;'> KDE Plots by Response </h1>""",
+                unsafe_allow_html=True)
 
     fig, axes = plt.subplots(1, 3, figsize=(18, 6))
 
@@ -93,12 +101,18 @@ def plot_kde_by_response(df):
     axes[0].set_ylabel('Density')
     axes[0].set_title('Distribution of Age by Response')
 
-    sns.kdeplot(data=df, x="Annual_Premium", hue="Response", ax=axes[1], palette="coolwarm", common_norm=False)
+    sns.kdeplot(
+        data=df,
+        x="Annual_Premium", hue="Response", ax=axes[1], palette="coolwarm", common_norm=False
+        )
     axes[1].set_xlabel('Annual Premium')
     axes[1].set_ylabel('Density')
     axes[1].set_title('Distribution of Annual Premium by Response')
 
-    sns.kdeplot(data=df, x="Vintage", hue="Response", ax=axes[2], palette="coolwarm", common_norm=False)
+    sns.kdeplot(
+        data=df,
+        x="Vintage", hue="Response", ax=axes[2], palette="coolwarm", common_norm=False
+        )
     axes[2].set_xlabel('Vintage')
     axes[2].set_ylabel('Density')
     axes[2].set_title('Distribution of Vintage by Response')
@@ -122,10 +136,10 @@ def cramers_v(x, y):
 
 def plot_cramers_v_heatmap(df, cat_variables):
     """Plotting function for Cramer's V heatmap"""
-    st.markdown("""<h1 style='font-family:Lucida Caligraphy;font-size:30px;color:DarkSlateBlue;text-align: center;'> 
-                Correlation between categorical variables (Cramer's V) </h1>""",
+    st.markdown("""<h1 style='font-family:Lucida Caligraphy;font-size:30px;color:DarkSlateBlue;
+                text-align: center;'>Correlation between categorical variables (Cramer's V)</h1>""",
                 unsafe_allow_html=True)
-    
+
     cramers_results = pd.DataFrame(index=cat_variables, columns=cat_variables)
     for i in cat_variables:
         for j in cat_variables:
@@ -135,5 +149,8 @@ def plot_cramers_v_heatmap(df, cat_variables):
                 cramers_results.loc[i, j] = cramers_v(df[i], df[j])
     cramers_results = cramers_results.astype(float)
     fig, ax = plt.subplots()
-    sns.heatmap(cramers_results, annot=True, fmt=".2f", cmap='coolwarm', cbar_kws={'label': 'Cramer\'s V'}, ax=ax)
+    sns.heatmap(
+        cramers_results,
+        annot=True, fmt=".2f", cmap='coolwarm', cbar_kws={'label': 'Cramer\'s V'}, ax=ax
+        )
     st.pyplot(fig)

@@ -1,0 +1,26 @@
+/* styles.css */
+.h1-title {
+    font-family: Lucida Caligraphy;
+    font-size: 40px;
+    color: DarkSlateBlue;
+    text-align: center;
+}
+
+.h1-problematic, .h1-dataset-desc, .h1-descriptive-stats, .h1-univariate-analysis, .h1-multivariate-analysis {
+    font-family: Lucida Caligraphy;
+    font-size: 35px;
+    text-align: left;
+}
+
+.h1-insurance-goal {
+    font-family: Lucida Caligraphy;
+    font-size: 20px;
+    text-align: justify;
+}
+
+.h1-stats-numeric, .h1-stats-categorical {
+    font-family: Lucida Caligraphy;
+    font-size: 30px;
+    color: DarkSlateBlue;
+    text-align: center;
+}
