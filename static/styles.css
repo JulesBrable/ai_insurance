@@ -6,15 +6,27 @@
     text-align: center;
 }
 
-.h1-problematic, .h1-dataset-desc, .h1-descriptive-stats, .h1-univariate-analysis, .h1-multivariate-analysis {
+.h1-problematic, .h1-dataset-desc, .h1-descriptive-stats, .h1-univariate-analysis, .h1-multivariate-analysis, .h1-preprocessing-steps {
     font-family: Lucida Caligraphy;
     font-size: 35px;
     text-align: left;
 }
 
-.h1-insurance-goal {
+.h1-insurance-goal{
     font-family: Lucida Caligraphy;
     font-size: 20px;
+    text-align: justify;
+}
+
+.h1-details  {
+    font-family: Lucida Caligraphy;
+    font-size: 16px;
+    text-align: justify;
+}
+
+.h1-sub-title  {
+    font-family: Lucida Caligraphy;
+    font-size: 14px;
     text-align: justify;
 }
 
