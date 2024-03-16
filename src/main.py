@@ -5,6 +5,7 @@ import argparse
 from models.preprocessing import create_preprocessor
 from models.training import get_model_configs, train_model_gscv, save_model_pickle
 from etl import get_params
+from app.utils import get_names_by_type
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -34,11 +35,7 @@ y = df['Response']
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-num_features = ['Age', 'Annual_Premium', 'Vintage']
-cat_features = [
-    'Gender', 'Vehicle_Age', 'Driving_License', 'Region_Code', 'Previously_Insured',
-    'Vehicle_Damage', 'Policy_Sales_Channel'
-]
+num_features, cat_features = get_names_by_type()
 
 params_grid = get_params('grid', model)
 params_skf = get_params('skf')
