@@ -8,6 +8,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import GridSearchCV, StratifiedKFold
 
+from src.app.utils import get_names_by_type
+
 
 def get_model_configs():
     return {
@@ -105,10 +107,7 @@ def train_model_gscv(
     Train model with StratifiedKFold and fine tune hyperparams using GridSearchCV
     """
     if resampling_method == "SMOTE":
-        cat_features = [
-            'Gender', 'Driving_License', 'Region_Code', 'Previously_Insured',
-            'Vehicle_Damage', 'Policy_Sales_Channel', 'Vehicle_Age'
-            ]
+        num_features, cat_features = get_names_by_type()
         X_train, y_train = fit_smote(X_train, y_train, cat_features)
 
     elif resampling_method == "OVER":
@@ -131,10 +130,7 @@ def train_model_oneshot(
     resampling_method=None
         ):
     if resampling_method == "SMOTE":
-        cat_features = [
-            'Gender', 'Driving_License', 'Region_Code', 'Previously_Insured',
-            'Vehicle_Damage', 'Policy_Sales_Channel', 'Vehicle_Age'
-            ]
+        num_features, cat_features = get_names_by_type()
         X_train, y_train = fit_smote(X_train, y_train, cat_features)
 
     elif resampling_method == "OVER":
