@@ -1,7 +1,26 @@
+from sklearn.model_selection import train_test_split
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
+
+from src.etl import load_data
+
+
+def split_data(df, test_size, x_features, y_feature="Response", SEED=42):
+    X = df[x_features]
+    y = df[y_feature]
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=test_size, random_state=SEED
+        )
+    return X_train, X_test, y_train, y_test
+
+
+def prepare_data(test_size: float = 0.2):
+    df = load_data()
+    x_features = list(df.drop(columns="Response", axis=1).columns)
+    X_train, X_test, y_train, y_test = split_data(df, test_size, x_features)
+    return X_train, X_test, y_train, y_test
 
 
 def create_preprocessor(num_features, cat_features):
