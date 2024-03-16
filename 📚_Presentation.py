@@ -3,30 +3,11 @@ import streamlit as st
 import pandas as pd
 import json
 
-from src.app.utils import load_css
+from src.app.utils import load_css, make_config
 from src.etl import load_data
 import src.app.page0 as p0
 
-st.set_page_config(
-    page_title="AI for Actuarial Science: Final Project",
-    page_icon="🧐",
-    layout="wide",
-    initial_sidebar_state="expanded",
-    menu_items={
-        'Report a bug': "https://github.com/JulesBrable/ai_insurance/issues/new",
-        'About': """
-        If you want to read more about the project, you would be interested in going to the
-        corresponding [GitHub](https://github.com/JulesBrable/ai_insurance) repository.
-
-        Contributions:
-        - [Jules Brablé](https://github.com/JulesBrable) - jules.brable@ensae.fr
-        - [Eunice Koffi]() - eunice.koffi@ensae.fr
-        - [Berthe Magajie Wamsa]() - berthe.magajie@ensae.fr
-        - [Leela Thamaraikkannan]() - leela.thamaraikkannan@ensae.fr
-        """
-    }
-)
-
+make_config()
 load_css('static/styles.css')
 
 st.markdown("<h1 class='h1-title'> 🏠 Health Insurance Cross Sell Prediction 🏥 </h1>",
