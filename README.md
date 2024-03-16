@@ -34,6 +34,20 @@ pip install -r requirements.txt
 
 _**Note:** the data comes from a [Kaggle Repository](https://www.kaggle.com/datasets/anmolkumar/health-insurance-cross-sell-prediction), and can also be directly downloaded from this site. We have also added the data to a S3 bucket, accessible to the [SSP Cloud](https://datalab.sspcloud.fr/)'s solution ([`MinIO`](https://min.io/)). Hence, in our code, we directly use the data that is stored in our bucket._
 
+## Model Training
+
+To train the model, you can run the following commands:
+
+```bash
+cd src
+```
+
+```bash
+python main.py
+```
+
+Note that `main.py` can take multiple arguments : `--methods` and `--model`. See the script for more information about the values that can be entered.
+
 ## Web application
 
 In this project, we also built a simple [`Streamlit`](https://streamlit.io/) web app.
