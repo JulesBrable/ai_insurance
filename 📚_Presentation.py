@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 import json
 
-from src.app.utils import load_css, make_config
+from src.app.utils import load_css, make_config, get_names_by_type
 from src.etl import load_data
 import src.app.page0 as p0
 
@@ -30,25 +30,34 @@ st.markdown("<h1 class='h1-dataset-desc'> Dataset column descriptions </h1>",
 st.subheader(' ')
 
 column_data = json.load(open('static/description.json'))
-
-data_column_description = pd.DataFrame(column_data)
-st.dataframe(data_column_description, hide_index=True)
-
+column_description = pd.DataFrame({
+    'Column Name': column_data['Column Name'],
+    'Column Description': column_data['Column Description']
+    })
 df = load_data()
 
+missings = df.isna().sum().transpose().reset_index(drop=False)
+missings.rename(columns={
+    missings.columns[0]: 'Column Name',
+    missings.columns[1]: "# Missing Values"
+    }, inplace=True)
+
+st.dataframe(
+    pd.merge(
+        column_description,
+        missings,
+        on="Column Name",
+    ), hide_index=True
+)
+
 if st.checkbox('Show Dataset'):
-    st.subheader('Dataset first five rows')
-    st.dataframe(df.head(), hide_index=True)
+    st.dataframe(df, hide_index=True)
 
 st.markdown("<h1 class='h1-descriptive-stats'> Descriptive Statistics </h1>",
             unsafe_allow_html=True)
 st.subheader(" ")
 
-num_features = ['Age', 'Annual_Premium', 'Vintage']  
-cat_features = [
-    'Gender', 'Driving_License', 'Region_Code', 'Previously_Insured',
-    'Vehicle_Damage', 'Policy_Sales_Channel', 'Vehicle_Age'
-    ]
+num_features, cat_features = get_names_by_type()
 
 tabs = st.tabs(["Charts", "Tables"])
 
