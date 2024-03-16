@@ -1,10 +1,33 @@
 """ETL functions"""
 import streamlit as st
 import pandas as pd
+import yaml
+from typing import Union
+
+
+def get_params(params_type: str, model: Union[str, None] = None):
+    with open('../conf/params.yaml', 'rb') as f:
+        conf = yaml.safe_load(f.read())
+        params = conf[params_type]
+        if model:
+            params = params[model]
+
+            def replace_none_strings_with_none_type(d):
+                for key, value in d.items():
+                    if value == 'None':
+                        d[key] = None
+                    elif isinstance(value, list):
+                        d[key] = [None if v == 'None' else v for v in value]
+                    elif isinstance(value, dict):
+                        replace_none_strings_with_none_type(value)
+                return d
+
+            params = replace_none_strings_with_none_type(params)
+    return params
 
 
 @st.cache_data
-def load_data(url = "https://minio.lab.sspcloud.fr/jbrablx/ai_insurance/raw/train.csv"):
+def load_data(url="https://minio.lab.sspcloud.fr/jbrablx/ai_insurance/raw/train.csv"):
     """
     Load data from a specified URL into a pandas DataFrame.
 

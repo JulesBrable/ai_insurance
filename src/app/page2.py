@@ -3,7 +3,7 @@ import pandas as pd
 from io import BytesIO
 import streamlit as st
 
-from src.models import get_model_configs
+from src.models.training import get_model_configs
 
 
 def manage_sidebar(df: pd.DataFrame, SEED):
@@ -25,11 +25,16 @@ def manage_sidebar(df: pd.DataFrame, SEED):
 
     model = selected_model_info["model"](**model_kwargs, random_state=SEED)
     test_size = st.sidebar.slider("Test Size (Proportion)", 0.01, 0.99, 0.20)
-    return selected_features, model_type, model, model_kwargs, test_size
+    method = st.sidebar.radio(
+        "Resampling Method",
+        options=[None, "SMOTE", "OVER"],
+        help="Resampling method to apply to the training dataset. Default: None"
+        )
+    return selected_features, model_type, model, model_kwargs, test_size, method
 
 
 @st.cache_data
-def to_excel(classif, model_info):
+def to_excel(classif, metrics, model_info):
     """
     Converts classification results and model parameters into an Excel file.
 
@@ -46,7 +51,8 @@ def to_excel(classif, model_info):
     """
     buffer = BytesIO()
     with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
-        classif.to_excel(writer, sheet_name='Results', index=True)
+        classif.to_excel(writer, sheet_name='Classification Report', index=True)
+        metrics.to_excel(writer, sheet_name='Metrics', index=True)
         model_info.to_excel(writer, sheet_name='Params', index=True)
     return buffer
 
