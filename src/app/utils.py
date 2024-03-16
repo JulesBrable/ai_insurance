@@ -1,4 +1,5 @@
 import streamlit as st
+import json
 
 
 def load_css(file_name):
@@ -28,9 +29,7 @@ def make_config():
     )
 
 
-def display_classif_metrics(metrics_df, classif_report):
-    cols = st.columns(2)
-    with cols[0]:
-        st.dataframe(metrics_df, hide_index=True)
-    with cols[1]:
-        st.dataframe(classif_report)
+def get_names_by_type(description_filepath: str = 'static/description.json'):
+    f = json.load(open(description_filepath))
+    num_features, cat_features = f["num"], f["cat"]
+    return num_features, cat_features
