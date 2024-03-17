@@ -47,6 +47,7 @@ python main.py
 ```
 
 Note that `main.py` can take multiple arguments : `--methods` and `--model`. See the script for more information about the values that can be entered.
+By default, we are training a Random Forest or a Logistic Regression, by GridSearchCV & StratifiedKFold (K=5) cross-validation. you can change the parameters of the grid in the `conf/params.yaml` file.
 
 ## Web application
 
