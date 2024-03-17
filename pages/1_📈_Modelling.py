@@ -126,4 +126,7 @@ with tabs[0]:
             eval.plot_model_tree(model)
 
 with tabs[1]:
-    st.write("Deep Learning")
+    st.markdown(
+        "Details about the deep learning model can be found [here](%s)"
+        % https://github.com/JulesBrable/ai_insurance/blob/Leela/Neural_Network.ipynb
+        )
