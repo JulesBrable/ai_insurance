@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: ai-insurance
-        image: jbrable/ai_insurance:v2.0.0
+        image: jbrable/ai_insurance:v2.0.1
         ports:
         - containerPort: 80
         resources:
