@@ -127,6 +127,5 @@ with tabs[0]:
 
 with tabs[1]:
     st.markdown(
-        "Details about the deep learning model can be found [here](%s)"
-        % https://github.com/JulesBrable/ai_insurance/blob/Leela/Neural_Network.ipynb
+        "Details about the deep learning model can be found [here](https://github.com/JulesBrable/ai_insurance/blob/Leela/Neural_Network.ipynb)"
         )
