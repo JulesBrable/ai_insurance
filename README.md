@@ -3,6 +3,13 @@ _Repository for the final project of the AI for Actuarial Science course (2nd Se
 
 ## Contents
 
+* The code used to train the machine learning models can be found in the `src/models/` folder, and the `main.py` script orchestrates it all.
+* The code used to train the deep learning model can be found in the `DeepLearning.ipynb` notebook.
+* Finally, on the one hand, `📚_Presentation.py` and `pages/` contain the user interface code for the three pages of our `Streamlit` application. On the other, `src/app/` contains the code for our application's backend (as well as some useful frontend components).
+
+_**NB1:** The data comes from a public [Kaggle Repository](https://www.kaggle.com/datasets/anmolkumar/health-insurance-cross-sell-prediction), and can also be directly downloaded from this site. We have also added the data to a S3 bucket, accessible to the [SSP Cloud](https://datalab.sspcloud.fr/)'s solution ([`MinIO`](https://min.io/)). Hence, in our code, we directly use the data that is stored in our bucket._
+
+_**NB2:** When our application runs, many static elements are displayed. However, we also load the machine learning models we've trained (we've trained 6 models in total). The trained models are stored in the same S3 bucket as our data, and when running the application, we store them in cache memory to avoid reloading / optimize code efficiency._
 
 ## Setup Instructions
 
@@ -31,8 +38,6 @@ conda acitvate ai_insurance
 ```bash
 pip install -r requirements.txt
 ```
-
-_**Note:** the data comes from a [Kaggle Repository](https://www.kaggle.com/datasets/anmolkumar/health-insurance-cross-sell-prediction), and can also be directly downloaded from this site. We have also added the data to a S3 bucket, accessible to the [SSP Cloud](https://datalab.sspcloud.fr/)'s solution ([`MinIO`](https://min.io/)). Hence, in our code, we directly use the data that is stored in our bucket._
 
 ## Model Training
 
