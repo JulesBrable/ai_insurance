@@ -1,6 +1,7 @@
+"""Script to train a model"""
+import argparse
 import pandas as pd
 from sklearn.model_selection import train_test_split
-import argparse
 
 from models.preprocessing import create_preprocessor
 from models.training import get_model_configs, train_model_gscv, save_model_pickle

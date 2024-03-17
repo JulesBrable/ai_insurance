@@ -1,8 +1,8 @@
 """ETL functions"""
+from typing import Union
 import streamlit as st
 import pandas as pd
 import yaml
-from typing import Union
 
 
 def get_params(
@@ -10,6 +10,9 @@ def get_params(
     model: Union[str, None] = None,
     filepath: str = '../conf/params.yaml'
         ):
+    """
+    Import parameters grid
+    """
     with open(filepath, 'rb') as f:
         conf = yaml.safe_load(f.read())
         params = conf[params_type]
