@@ -29,7 +29,7 @@ def make_config():
     )
 
 
-def get_names_by_type(description_filepath: str = 'static/description.json'):
+def get_names_by_type(description_filepath: str = '../static/description.json'):
     f = json.load(open(description_filepath))
     num_features, cat_features = f["num"], f["cat"]
     return num_features, cat_features
