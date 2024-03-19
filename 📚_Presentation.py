@@ -57,7 +57,7 @@ st.markdown("<h1 class='h1-descriptive-stats'> Descriptive Statistics </h1>",
             unsafe_allow_html=True)
 st.subheader(" ")
 
-num_features, cat_features = get_names_by_type()
+num_features, cat_features = get_names_by_type('static/description.json')
 
 tabs = st.tabs(["Charts", "Tables"])
 
