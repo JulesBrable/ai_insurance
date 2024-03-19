@@ -4,7 +4,7 @@ import os
 import logging
 from imblearn.over_sampling import SMOTENC, RandomOverSampler
 from sklearn.pipeline import Pipeline
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import GridSearchCV, StratifiedKFold
 
@@ -22,6 +22,12 @@ def get_model_configs():
         },
         "Logistic Regression": {
             "model": LogisticRegression,
+            "params": [
+                {"name": "C", "type": "slider", "min": 0.01, "max": 10.0, "default": 1.0}
+            ]
+        },
+        "Gradient Boosting": {
+            "model": GradientBoostingClassifier,
             "params": [
                 {"name": "C", "type": "slider", "min": 0.01, "max": 10.0, "default": 1.0}
             ]

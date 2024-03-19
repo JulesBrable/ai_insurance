@@ -17,7 +17,7 @@ parser.add_argument(
     )
 parser.add_argument(
     "--model",
-    choices=['Random Forest', 'Logistic Regression'],
+    choices=['Random Forest', 'Logistic Regression', 'Gradient Boosting'],
     default='Random Forest',
     help="Machine Learning model to train"
 )
