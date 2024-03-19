@@ -18,7 +18,7 @@ df = load_data()
 selected_features, model_type, model, model_kwargs, test_size, method = manage_sidebar(df, SEED)
 
 if selected_features:
-    num_features, cat_features = get_names_by_type()
+    num_features, cat_features = get_names_by_type('static/description.json')
     preprocessor = create_preprocessor(num_features, cat_features)
     X_train, X_test, y_train, y_test = split_data(df, test_size, selected_features)
 
