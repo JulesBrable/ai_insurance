@@ -71,7 +71,7 @@ with tabs[0]:
 
     st.markdown(
         """<h1 class='h1-sub-title'> Cross-Validation</h1> \n""", unsafe_allow_html=True)
-
+    st.markdown("_StratifiedKFold CV (K=5)_")
     col1, col2 = st.columns(2)
     with col1:
         html_content_logistic = p1.generate_model_params_html(
@@ -127,5 +127,6 @@ with tabs[0]:
 
 with tabs[1]:
     st.markdown(
-        "Details about the deep learning model can be found [here](https://github.com/JulesBrable/ai_insurance/blob/Leela/Neural_Network.ipynb)"
+        "Details about the deep learning model can be found "
+        "[here](https://github.com/JulesBrable/ai_insurance/blob/main/Neural_Network.ipynb)"
         )
