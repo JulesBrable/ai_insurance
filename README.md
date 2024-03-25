@@ -4,7 +4,7 @@ _Repository for the final project of the AI for Actuarial Science course (2nd Se
 ## Contents
 
 * The code used to train the machine learning models can be found in the `src/models/` folder (the parameters used for the grid search are stored in the `conf` folder, and the `main.py` script orchestrates it all.
-* The code used to train the deep learning model can be found in the `DeepLearning.ipynb` notebook.
+* The code used to train the deep learning model can be found in the `Neural_Network.ipynb` notebook.
 * Then, on the one hand, `📚_Presentation.py` and `pages/` contain the user interface code for the three pages of our `Streamlit` application. On the other, `src/app/` contains the code for our application's backend (as well as some useful frontend components). `static/` folder contains some content of the app and the `css` styles.
 * Finally, in order to deploy the app, we built a `Docker` image (with entrypoint being the `run.sh`script). We automated the image delivery thanks to some configuration stuff (`deployment/`and `argocd` folders), hence a new image is being pushed to the `DockerHub` at every new version of the app.
 
